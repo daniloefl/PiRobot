@@ -22,7 +22,8 @@ def main(win):
         if key == -1:
           key = oldkey
       except KeyboardInterrupt:
-        print("You pressed Ctrl+C. Stopping and exiting.")
+        win.addstr(8, 0, 'Quitting, as requested.')
+        time.sleep(1)
         break
       #win.clear()
       win.addstr(0,0,'Press a key.')
@@ -36,41 +37,41 @@ def main(win):
         r.stop()
         key = -1
         oldkey = -1
-        win.addstr(5,8,'Moved forward.')
+        win.addstr(5,8,'Moved forward.                             ')
       elif key == curses.KEY_DOWN:
         r.backwards()
         time.sleep(0.1)
         r.stop()
         key = -1
         oldkey = -1
-        win.addstr(5,8,'Moved backwards.')
+        win.addstr(5,8,'Moved backwards.                           ')
       elif key == curses.KEY_LEFT:
         r.left()
         time.sleep(0.1)
         r.stop()
         key = -1
         oldkey = -1
-        win.addstr(5, 8, 'Turned left.')
+        win.addstr(5, 8, 'Turned left.                             ')
       elif key == curses.KEY_RIGHT:
         r.right()
         time.sleep(0.1)
         r.stop()
         key = -1
         oldkey = -1
-        win.addstr(5, 8, 'Turned right.')
+        win.addstr(5, 8, 'Turned right.                             ')
       elif key == ord('d') or key == ord('D'):
         d = r.distance()
         oldkey = key
-        win.addstr(5, 8, "Distance from next object ahead: %.3f cm " % (d*1e2))
+        win.addstr(5, 8, "Distance from next object ahead: %.3f cm       " % (d*1e2))
       elif key == ord('q') or key == ord('Q'):
         win.addstr(8, 0, 'Quitting, as requested.')
-        time.sleep(1)
         break
       else:
         pass
   except KeyboardInterrupt:
-    print("You pressed Ctrl+C. Stopping and exiting.")
+    pass
 
+  time.sleep(1)
   r.cleanup()
 
 
